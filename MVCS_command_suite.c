@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
+#include "VCS_Structure.h"
 
 
 int main(int argc, char *argv[]) {
