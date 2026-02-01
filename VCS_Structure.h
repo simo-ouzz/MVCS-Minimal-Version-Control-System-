@@ -5,6 +5,34 @@
 #define HASH_HEX_SIZE 41    // 40 hex + null
 #define MAX_NAME 256
 
+
+typedef struct {
+    unsigned char *data;
+    size_t size;
+} Buffer;
+
+Buffer read_file(const char *path) {
+    Buffer buf = {0};
+
+    FILE *f = fopen(path, "rb");
+    if (!f) return buf;
+
+    fseek(f, 0, SEEK_END);
+    buf.size = ftell(f);
+    rewind(f);
+
+    buf.data = malloc(buf.size);
+    if (!buf.data) {
+        fclose(f);
+        buf.size = 0;
+        return buf;
+    }
+
+    fread(buf.data, 1, buf.size, f);
+    fclose(f);
+
+    return buf;
+}
 /* ---------- Forward Declarations ---------- */
 typedef struct Tree Tree;
 

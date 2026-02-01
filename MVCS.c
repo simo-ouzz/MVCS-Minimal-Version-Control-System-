@@ -2,11 +2,11 @@
 #include <string.h>
 #include <windows.h>
 #include "VCS_Structure.h"
-#include "Command_suite.h"
+#include "MVCS_Lib.h"
 
 
 int main(int argc, char *argv[]) {
-    Init(argc, argv);
+    compress_file_and_write("texr.txt");
     return 0;
    
 }
